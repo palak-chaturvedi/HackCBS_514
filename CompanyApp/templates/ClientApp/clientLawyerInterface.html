@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="https://thumbs.dreamstime.com/b/law-firm-student-law-office-symbol-isolated-dark-background-simple-vector-logo-law-firm-student-law-office-symbol-isolated-195469545.jpg">
+    <title>studentStack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'find-student.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+    
+
+<div class="bannner">
+        <div class="header">
+            <h1 id="heading">Your home for Concerns.</h1>
+        </div>
+        <div class="container">
+            <form action="{% url 'CompanyPage' %}" onsubmit="return validate()" enctype="multipart/form-data"
+                method='post'>{% csrf_token %}
+            <div class="searcharea">
+                <div class="locality">
+                    <i class="fa fa-map-marker" aria-hidden="true"> </i>
+                    <input id="omni-searchbox-locality" data-input-box-id="omni-searchbox-locality"
+                        class="c-omni-searchbox c-omni-searchbox--large" autocomplete="off" name="location"
+                        placeholder="Search location.." />
+                </div>
+                <div class="keyword">
+                    <i class="fa fa-search" aria-hidden="false"> </i>
+                    <input id="omni-searchbox-keyword" id="omni-searchbox-keyword"
+                        class="c-omni-searchbox c-omni-searchbox--large" autocomplete="off" name="casetype"
+                        placeholder="Search Category.." />
+                </div>
+            </div>
+
+                    <input id="omni-searchbox-locality" data-input-box-id="omni-searchbox-locality"
+                        class="c-omni-searchbox c-omni-searchbox--large" autocomplete="off" name="name"
+                        placeholder="Search By Name.." />
+
+                
+            <div class="bn">
+                <button type="submit">search</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+<h1>Accepted Students</h1>
+    {% for student in AStudents %}
+
+<a href="{% url 'studentProfileToClient' id=student.id  slug=student.Slug  %}"> student.Name }}
+</a>
+{% endfor %}
+
+<h2> Progress</h2>
+
+    {% for student in Students %}
+<a href="{% url 'studentProfileToClient' id=student.id  slug=student.Slug  %}"> student.Name }}
+
+
+{% endfor %}
+</body>
+
+</html>
